@@ -30,6 +30,15 @@ H5_VERS_MAJOR=$(shell get_hdf5_version --major)
 H5_VERS_MINOR=$(shell get_hdf5_version --minor)
 ```
 
+Probably not every user of your code has `get_hdf5_version` installed, so you might want to add a default fallback option:
+
+```make
+H5_VERS_MINOR+=8
+H5_VERS_MINOR:=$(word 1, $(H5_VERS_MINOR))
+```
+
+This will, if `H5_VERS_MINOR` is empty, replace the empty value with a default of 8.
+
 Hand over the macros to your compiler:
 
 ```make
