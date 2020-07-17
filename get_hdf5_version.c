@@ -39,19 +39,26 @@
  */
 
 void print_help(char* argv0) {
+	if (!strcmp(H5_VERS_SUBRELEASE, "")) {
+		printf("Get the version number of the HDF5 library this tool was compiled against (%d.%d.%d).\n",
+		       H5_VERS_MAJOR, H5_VERS_MINOR, H5_VERS_RELEASE);
+	} else {
+		printf("Get the version number of the HDF5 library this tool was compiled against (%d.%d.%d-%s).\n",
+		       H5_VERS_MAJOR, H5_VERS_MINOR, H5_VERS_RELEASE, H5_VERS_SUBRELEASE);
+	}
 	printf("\
-Get the version number of the HDF5 library this tool was compiled against (%d.%d.%d-%d).\n\
 useage: %s [--minor | --major | --release | --subrelease | --macro]\n\
   --major      : return the major      version (%d) of the installed HDF5 version\n\
   --minor      : return the minor      version (%d) of the installed HDF5 version\n\
   --release    : return the release    version (%d) of the installed HDF5 version\n\
-  --subrelease : return the subrelease version (%d) of the installed HDF5 version\n\
+  --subrelease : return the subrelease version (%s) of the installed HDF5 version\n\
   --macro instructs the program to return a macro describing the version of HDF5, e.g.\n\
           H5_VERS_1_8  for HDF5 1.8\n\
           H5_VERS_1_10 for HDF5 1.10\n\
           H5_VERS_1_12 for HDF5 1.12 etc. (you probably got the idea by now...).\n\
-", H5_VERS_MAJOR, H5_VERS_MINOR, H5_VERS_RELEASE, H5_VERS_SUBRELEASE, argv0,
-   H5_VERS_MAJOR, H5_VERS_MINOR, H5_VERS_RELEASE, H5_VERS_SUBRELEASE);
+    Only the major and minor version numbers are returned, since there should be no\n\
+    incompatible API changes in between different version of release or subrelease.\n\
+", argv0, H5_VERS_MAJOR, H5_VERS_MINOR, H5_VERS_RELEASE, H5_VERS_SUBRELEASE);
 }
 
 int main(int argc, char** argv) {
@@ -62,7 +69,7 @@ int main(int argc, char** argv) {
 	} else if (argc == 2 && !strcmp(argv[1], "--release")) {
 		printf("%d", H5_VERS_RELEASE);
 	} else if (argc == 2 && !strcmp(argv[1], "--subrelease")) {
-		printf("%d", H5_VERS_SUBRELEASE);
+		printf(H5_VERS_SUBRELEASE);
 	}  else if (argc == 2 && !strcmp(argv[1], "--macro")) {
 		printf("H5_VERS_%d_%d", H5_VERS_MAJOR, H5_VERS_MINOR);
 	} else {
