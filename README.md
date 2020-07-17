@@ -20,7 +20,7 @@ specify `--major`, `--minor`, `--release` or `--subrelease` on the command line:
 * `get_hdf5_version --release` gives e.g. 0 for HDF5 1.12.0-1479016456
 * `get_hdf5_version --subrelease` gives e.g. 1479016456 for HDF5 1.12.0-1479016456
 
-## Useage in a Makefile
+## Usage in a Makefile
 Suppose you would like to use this utility in a `Makefile` for a Fortran program.
 
 First you have to use `get_hdf5_version` to declare the HDF5 version macros:
