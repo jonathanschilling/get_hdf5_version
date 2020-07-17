@@ -1,3 +1,8 @@
+# resulting binary
+get_hdf5_version
+
+## only GitHub's defaults below
+
 # Prerequisites
 *.d
 
