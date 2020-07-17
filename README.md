@@ -30,13 +30,23 @@ H5_VERS_MAJOR=$(shell get_hdf5_version --major)
 H5_VERS_MINOR=$(shell get_hdf5_version --minor)
 ```
 
+Hand over the macros to your compiler:
+
+```make
+myprog: myprog.f90
+  gfortran -DH5_VERS_MINOR=$(H5_VERS_MINOR) -o myprog myprog.f90
+```
+
+
 Then, in your sources, you can use them just as in C:
 
 ```fortran
 #if H5_VERS_MINOR<11
-  integer(haddr_t)               :: dummy_addr_token                           ! dummy argument for outputs of h5lget_info_f for HDF5 1.10
+!> dummy argument for outputs of h5lget_info_f for HDF5 1.10
+  integer(haddr_t)               :: dummy_addr_token
 #else
-  type(h5o_token_t_f)            :: dummy_addr_token                           ! dummy argument for outputs of h5lget_info_f for HDF5 1.12
+!> dummy argument for outputs of h5lget_info_f for HDF5 1.12
+  type(h5o_token_t_f)            :: dummy_addr_token
 #endif
 
 ... some more code ...
