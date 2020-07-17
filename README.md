@@ -15,7 +15,7 @@ The corresponding macros returned, if no parameters are given, are:
 
 If you only require the major or only the minor version number,
 specify `--major`, `--minor`, `--release` or `--subrelease` on the command line:
-* `argv[0] --major` gives e.g.  1 for HDF5 1.12.0-1479016456
-* `argv[0] --minor` gives e.g. 12 for HDF5 1.12.0-1479016456
-* `argv[0] --release` gives e.g. 0 for HDF5 1.12.0-1479016456
-* `argv[0] --subrelease` gives e.g. 1479016456 for HDF5 1.12.0-1479016456
+* `get_hdf5_version --major` gives e.g.  1 for HDF5 1.12.0-1479016456
+* `get_hdf5_version --minor` gives e.g. 12 for HDF5 1.12.0-1479016456
+* `get_hdf5_version --release` gives e.g. 0 for HDF5 1.12.0-1479016456
+* `get_hdf5_version --subrelease` gives e.g. 1479016456 for HDF5 1.12.0-1479016456
