@@ -6,7 +6,7 @@ of the HDF5 library for use in preprocessing of e.g. Fortran source code.
 This is because HDF5 does not provide files containing the HDF5 version number _as preprocessor macros_
 which can be directly included in the Fortran source code.
 When executed, this program prints a preprocessor macro, which then can be included
-in the calls to e.g. gfortran inside the Makefile.
+in the calls to e.g. `gfortran` inside the Makefile.
 
 The corresponding macros returned, if no parameters are given, are:
 * `H5_VERS_1_8`  for HDF5 1.8,
